@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>按钮瞄准</title>
+</head>
+<style>
+    html,
+    body,
+    .box {
+        background: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+
+    .box {
+        width: 100px;
+        height: 100px;
+        color: white;
+        font-size: 36px;
+        filter: blur(2px);
+        cursor: pointer;
+        position: relative;
+        transition: 0.5s;
+    }
+
+    .box:hover {
+        filter: none;
+    }
+
+    .box::after {
+        position: absolute;
+        content: '';
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        border: 1px solid red;
+    }
+
+    .box span:not(:first-child) {
+        position: absolute;
+        background: red;
+    }
+
+    .box span.top,
+    .box span.bottom {
+        width: 1px;
+        height: 80px;
+        left: 50%;
+    }
+
+    .box span.top {
+        top: -80px;
+    }
+
+    .box span.bottom {
+        bottom: -80px;
+    }
+
+    .box span.left,
+    .box span.right {
+        width: 80px;
+        height: 1px;
+        top: 50%;
+    }
+
+    .box span.left {
+        left: -80px;
+    }
+
+    .box span.right {
+        right: -80px;
+    }
+
+    @keyframes aim {
+        from {
+            filter: opacity(0.2);
+        }
+
+        to {
+            filter: opacity(0.8);
+        }
+    }
+
+    .box::after {
+        filter: opacity(0);
+    }
+
+    .box span:not(:first-child) {
+        filter: opacity(0);
+    }
+
+    .box:hover::after,
+    .box:hover span:not(:first-child) {
+        animation: aim 1s linear infinite alternate;
+    }
+</style>
+<body>
+    <div class="box">
+       <span>BUTTON</span>
+       <span class="top"></span>
+       <span class="bottom"></span>
+       <span class="left"></span>
+       <span class="right"></span>
+    </div>
+</body>
+</html>

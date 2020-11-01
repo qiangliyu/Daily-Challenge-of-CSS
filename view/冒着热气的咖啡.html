@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>冒着热气的咖啡</title>
+</head>
+<style>
+    html,
+    body,
+    .coffee {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: brown;
+    }
+
+    .coffee {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .cup {
+        width: 120px;
+        height: 120px;
+        background: #fff;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        position: relative;
+    }
+    /* 杯口 */
+    .cup::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 30px;
+        background-color: chocolate;
+        border: 5px solid white;
+        box-sizing: border-box;
+        border-radius: 50%;
+        top: -13px;
+        box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.5);
+    }
+    /* 杯柄 */
+    .cup::before {
+        content: '';
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: 13px solid #fff;
+        right: -35px;
+        top: 60px;
+        transform: translateY(-50%);
+    }
+
+    /* 杯盘 */
+    .plate {
+        width: 200px;
+        height: 10px;
+        background: #fff;
+        margin-top: 1px;
+        position: relative;
+    }
+
+    .plate::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 12px;
+        background-color: #fff;
+        box-sizing: border-box;
+        border-radius: 50%;
+        top: 2px;
+    }
+
+    .vapor span {
+        display: inline-block; 
+        width: 2px;
+        height: 30px;
+        background: #fff;
+        animation: rise 3s linear infinite;
+        filter: opacity(0);
+    }
+
+    .coffee .vapor span:nth-child(1) {
+        animation-delay: 0.5s;
+    }
+
+    .coffee .vapor span:nth-child(2) {
+        animation-delay: 0.1s;
+    }
+
+    .coffee .vapor span:nth-child(3) {
+        animation-delay: 0.3s;
+    }
+
+    .coffee .vapor span:nth-child(4) {
+        animation-delay: 0.4s;
+    }
+
+    .coffee .vapor span:nth-child(5) {
+        animation-delay: 0.2s;
+    }
+
+    @keyframes rise {
+        from {
+            transform: translateY(0);
+            filter: opacity(1) blur(2px);
+        }
+
+        to {
+            transform: translateY(60px);
+            filter: opacity(0) blur(4px);
+        }
+    }
+</style>
+
+<body>
+    <box class="coffee">
+        <div class="vapor">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="cup">
+
+        </div>
+        <div class="plate">
+
+        </div>
+    </box>
+</body>
+</html>
